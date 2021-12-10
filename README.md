@@ -1,5 +1,14 @@
 # mouse-automove
 
+## Background
+My employee is financial institution, therefore a lot of securities were imposed on laptop. 
+Although the laptop could have restricted access to internet, but any download will be blocked.
+Setting was made so that the laptop will be lock after few minutes, good when in office, but a hassle when working from home.
+Since download was blocked, so anti-idle application could not be downloaded and used.
+
+Therefore, the app was born, so that I could make a coffee with ease of mind. 
+
+## Introduction
 **mouse-automove** is simple Java application that uses Java AWT **Robot API** to move mouse randomly.
 - Pure Java 8 SDK only, without any other API library.
 - Shutdown hook to close the timer properly with its queued task.
