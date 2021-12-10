@@ -1,0 +1,16 @@
+**/*.class
+*.class
+**/*.jar
+*.jar
+bin/
+bin/**
+
+/.idea/**
+.idea/**
+**/*.iml
+*.iml
+
+/out/
+**/out/**
+
+.DS_Store
