@@ -35,7 +35,7 @@ public class MouseInstance {
         return INSTANCE;
     }
 
-    public void start() {
+    public synchronized void start() {
         timer = new Timer();
         MouseUtils.log("Timer started");
 
@@ -43,7 +43,7 @@ public class MouseInstance {
         started = true;
     }
 
-    public void stop() {
+    public synchronized void stop() {
         timer.cancel();
         started = false;
         MouseUtils.log("Timer stopped");
@@ -63,7 +63,7 @@ public class MouseInstance {
         }
     }
 
-    public boolean isStarted() {
+    public synchronized boolean isStarted() {
         return started;
     }
 }

@@ -1,4 +1,5 @@
 @ECHO OFF
+TITLE mouse-automation-compile
 CD ..
 IF EXIST bin (RMDIR /S /Q bin)
 MKDIR bin
