@@ -13,9 +13,9 @@ import java.util.Scanner;
  */
 public class MousePrompt {
 
-    private final Console console = System.console();
+    private static final Console CONSOLE = System.console();
 
-    private final Scanner scanner = new Scanner(System.in);
+    private static final Scanner SCANNER = new Scanner(System.in);
 
     private static final MousePrompt INSTANCE = new MousePrompt();
 
@@ -23,13 +23,20 @@ public class MousePrompt {
         // Singleton
     }
 
-    public static MousePrompt getInstance() {
+    static Console getConsole() {
+        return CONSOLE;
+    }
+
+    static Scanner getScanner() {
+        return SCANNER;
+    }
+
+    static MousePrompt getInstance() {
         return INSTANCE;
     }
 
     public boolean prompt(String message) {
         MouseUtils.log("");
-
         String input = readInput(message);
 
         return isValidInput(input);
@@ -37,12 +44,12 @@ public class MousePrompt {
 
     private String readInput(String message) {
         String input;
-        if (console != null) {
-            input = console.readLine(message);
+        if (CONSOLE != null) {
+            input = CONSOLE.readLine(message);
             MouseUtils.log("");
         } else {
             MouseUtils.log(message);
-            input = scanner.next();
+            input = SCANNER.next();
         }
 
         return input;
@@ -66,9 +73,5 @@ public class MousePrompt {
         }
 
         return result;
-    }
-
-    public void shutdown() {
-        scanner.close();
     }
 }

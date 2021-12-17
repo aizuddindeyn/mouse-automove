@@ -5,8 +5,9 @@
 package com.aizuddindeyn.mouse;
 
 import java.awt.AWTException;
-import java.text.MessageFormat;
-import java.util.Scanner;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
 
 /**
  * @author aizuddindeyn
@@ -14,15 +15,17 @@ import java.util.Scanner;
  */
 public class MouseApplication {
 
-    private static final Scanner SCANNER = new Scanner(System.in);
+    private static final ScheduledExecutorService EXECUTOR = Executors.newSingleThreadScheduledExecutor();
 
     public static void main(String[] args) {
         MouseUtils.log("Starting application");
 
         Runtime.getRuntime().addShutdownHook(new Thread(() -> {
             MouseInstance.getInstance().stop();
-            MousePrompt.getInstance().shutdown();
+            MousePrompt.getScanner().close();
+            EXECUTOR.shutdown();
             MouseUtils.log("Stopping application");
+            MouseUtils.log("");
         }));
 
         try {
@@ -34,26 +37,10 @@ public class MouseApplication {
 
         MouseInstance.getInstance().start();
 
-        while (true) {
-            try {
-                boolean started = MouseInstance.getInstance().isStarted();
-                String status = (started) ? "started" : "paused";
-                String action = (started) ? "pause" : "resume";
-                String message =
-                        MessageFormat.format("App {0}. Press ''p'' and ''Enter'' to {1} (''e'' to exit): ",
-                                status, action);
-                boolean valid = MousePrompt.getInstance().prompt(message);
-                if (valid) {
-                    startStop(started);
-                }
-
-            } catch (Exception ex) {
-                MouseUtils.logErr(ex.getMessage());
-            }
-        }
+        EXECUTOR.schedule(new MouseRunnable(EXECUTOR), MouseUtils.EXECUTOR_DELAY, TimeUnit.MILLISECONDS);
     }
 
-    private static void startStop(boolean started) {
+    static void startStop(boolean started) {
         if (started) {
             MouseInstance.getInstance().stop();
         } else {
