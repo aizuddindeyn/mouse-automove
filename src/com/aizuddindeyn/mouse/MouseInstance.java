@@ -39,8 +39,8 @@ class MouseInstance {
         timer = new Timer();
         MouseUtils.log("Timer started");
 
-        new MouseTask(timer, INSTANCE).run();
         started = true;
+        timer.schedule(new MouseTask(timer, INSTANCE), 1500L);
     }
 
     synchronized void stop() {

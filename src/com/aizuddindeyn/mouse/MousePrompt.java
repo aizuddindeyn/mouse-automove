@@ -32,7 +32,6 @@ class MousePrompt {
     }
 
     boolean prompt(String message) {
-        MouseUtils.log("");
         String input = readInput(message);
 
         return isValidInput(input);
@@ -42,7 +41,6 @@ class MousePrompt {
         String input;
         if (CONSOLE != null) {
             input = CONSOLE.readLine(message);
-            MouseUtils.log("");
         } else {
             MouseUtils.log(message);
             input = SCANNER.next();

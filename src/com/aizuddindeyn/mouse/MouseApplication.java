@@ -25,7 +25,6 @@ public class MouseApplication {
             MousePrompt.getScanner().close();
             EXECUTOR.shutdown();
             MouseUtils.log("Stopping application");
-            MouseUtils.log("");
         }));
 
         try {

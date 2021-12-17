@@ -25,7 +25,6 @@ class MouseMoveEdge implements MouseMove {
         Dimension screen = MouseUtils.getScreenResolution();
 
         int round = MouseRandom.getSecureRandom().nextInt(EDGE_ROUND_MAX) + 1;
-        MouseUtils.log("Round: " + round);
 
         List<Point> targets = new ArrayList<>();
         for (int i = 1; i <= round; i++) {
