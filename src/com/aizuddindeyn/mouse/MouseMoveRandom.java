@@ -24,7 +24,6 @@ public class MouseMoveRandom implements MouseMove {
 
         int step = RANDOM_STEP_MIN +
                 (MouseRandom.getSecureRandom().nextInt(RANDOM_STEP_MAX - RANDOM_STEP_MIN) + 1);
-        MouseUtils.log("Step: " + step);
 
         int x = p.x;
         int y = p.y;

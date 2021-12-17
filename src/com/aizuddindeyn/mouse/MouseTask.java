@@ -33,7 +33,6 @@ public class MouseTask extends TimerTask {
 
     private void setup() {
         int seconds = MouseUtils.generateIntervalSeconds(DELAY_TIMES_MIN, (DELAY_TIMES_MAX - DELAY_TIMES_MIN));
-        MouseUtils.log("Next interval: " + seconds + "s");
         if (instance.isStarted()) {
             timer.schedule(new MouseTask(timer, instance), seconds * 1000L);
         }

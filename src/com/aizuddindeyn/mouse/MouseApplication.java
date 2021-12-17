@@ -21,7 +21,7 @@ public class MouseApplication {
 
         Runtime.getRuntime().addShutdownHook(new Thread(() -> {
             MouseInstance.getInstance().stop();
-            SCANNER.close();
+            MousePrompt.getInstance().shutdown();
             MouseUtils.log("Stopping application");
         }));
 
@@ -36,23 +36,28 @@ public class MouseApplication {
 
         while (true) {
             try {
-                String status = (MouseInstance.getInstance().isStarted()) ? "started" : "paused";
-                String action = (MouseInstance.getInstance().isStarted()) ? "pause" : "resume";
-                System.out.println();
-                System.out.print(MessageFormat.format("App {0}. Press 'p' and Enter to {1}: ", status, action));
-                String input = SCANNER.next();
-                // Type 'p' to pause or resume
-                if ((input != null && !input.isEmpty()) && 'p' == input.charAt(0)) {
-                    if (MouseInstance.getInstance().isStarted()) {
-                        MouseInstance.getInstance().stop();
-                    } else {
-                        MouseInstance.getInstance().start();
-                    }
+                boolean started = MouseInstance.getInstance().isStarted();
+                String status = (started) ? "started" : "paused";
+                String action = (started) ? "pause" : "resume";
+                String message =
+                        MessageFormat.format("App {0}. Press ''p'' and ''Enter'' to {1} (''e'' to exit): ",
+                                status, action);
+                boolean valid = MousePrompt.getInstance().prompt(message);
+                if (valid) {
+                    startStop(started);
                 }
 
             } catch (Exception ex) {
                 MouseUtils.logErr(ex.getMessage());
             }
+        }
+    }
+
+    private static void startStop(boolean started) {
+        if (started) {
+            MouseInstance.getInstance().stop();
+        } else {
+            MouseInstance.getInstance().start();
         }
     }
 }

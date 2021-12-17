@@ -54,7 +54,6 @@ public class MouseInstance {
             int type = MouseRandom.getSecureRandom().nextInt(MOVE_MAP.size()) + 1;
             MouseMove move = MOVE_MAP.get(type);
             if (move != null) {
-                MouseUtils.log("Move: " + move.getClass().getSimpleName());
                 move.move();
             }
 
