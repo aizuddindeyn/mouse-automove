@@ -14,13 +14,13 @@ import static com.aizuddindeyn.mouse.MouseUtils.DELAY_TIMES_MIN;
  * @author aizuddindeyn
  * @date 11/7/2020
  */
-public class MouseTask extends TimerTask {
+class MouseTask extends TimerTask {
 
     private final Timer timer;
 
     private final MouseInstance instance;
 
-    public MouseTask(Timer timer, MouseInstance instance) {
+    MouseTask(Timer timer, MouseInstance instance) {
         this.timer = timer;
         this.instance = instance;
     }

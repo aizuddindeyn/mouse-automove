@@ -11,7 +11,7 @@ import java.util.Scanner;
  * @author aizuddindeyn
  * @date 11/7/2020
  */
-public class MousePrompt {
+class MousePrompt {
 
     private static final Console CONSOLE = System.console();
 
@@ -23,10 +23,6 @@ public class MousePrompt {
         // Singleton
     }
 
-    static Console getConsole() {
-        return CONSOLE;
-    }
-
     static Scanner getScanner() {
         return SCANNER;
     }
@@ -35,7 +31,7 @@ public class MousePrompt {
         return INSTANCE;
     }
 
-    public boolean prompt(String message) {
+    boolean prompt(String message) {
         MouseUtils.log("");
         String input = readInput(message);
 

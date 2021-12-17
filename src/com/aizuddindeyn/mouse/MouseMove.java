@@ -11,7 +11,7 @@ import java.awt.Robot;
  * @author aizuddindeyn
  * @date 11/7/2020
  */
-public interface MouseMove {
+interface MouseMove {
 
     void move() throws Exception;
 

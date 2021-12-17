@@ -12,7 +12,7 @@ import java.util.Timer;
  * @author aizuddindeyn
  * @date 11/7/2020
  */
-public class MouseInstance {
+class MouseInstance {
 
     private static final MouseInstance INSTANCE = new MouseInstance();
 
@@ -31,11 +31,11 @@ public class MouseInstance {
         // Singleton
     }
 
-    public static MouseInstance getInstance() {
+    static MouseInstance getInstance() {
         return INSTANCE;
     }
 
-    public synchronized void start() {
+    synchronized void start() {
         timer = new Timer();
         MouseUtils.log("Timer started");
 
@@ -43,13 +43,13 @@ public class MouseInstance {
         started = true;
     }
 
-    public synchronized void stop() {
+    synchronized void stop() {
         timer.cancel();
         started = false;
         MouseUtils.log("Timer stopped");
     }
 
-    public void execute() {
+    void execute() {
         try {
             int type = MouseRandom.getSecureRandom().nextInt(MOVE_MAP.size()) + 1;
             MouseMove move = MOVE_MAP.get(type);
@@ -62,7 +62,7 @@ public class MouseInstance {
         }
     }
 
-    public synchronized boolean isStarted() {
+    synchronized boolean isStarted() {
         return started;
     }
 }

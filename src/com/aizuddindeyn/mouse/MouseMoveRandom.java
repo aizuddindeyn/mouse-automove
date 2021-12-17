@@ -14,7 +14,7 @@ import static com.aizuddindeyn.mouse.MouseUtils.RANDOM_STEP_MIN;
  * @author aizuddindeyn
  * @date 11/7/2020
  */
-public class MouseMoveRandom implements MouseMove {
+class MouseMoveRandom implements MouseMove {
 
     @Override
     public void move() throws Exception {

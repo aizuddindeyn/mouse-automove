@@ -14,21 +14,21 @@ import java.awt.Point;
  * @author aizuddindeyn
  * @date 11/7/2020
  */
-public class MouseUtils {
+class MouseUtils {
 
-    public static final int DELAY_TIMES_MIN = 15;
+    static final int DELAY_TIMES_MIN = 15;
 
-    public static final int DELAY_TIMES_MAX = 60;
+    static final int DELAY_TIMES_MAX = 60;
 
-    public static final int MOVE_TIMES = 1000;
+    static final int MOVE_TIMES = 1000;
 
-    public static final int EDGE_PIXEL = 100;
+    static final int EDGE_PIXEL = 100;
 
-    public static final int RANDOM_STEP_MIN = 3;
+    static final int RANDOM_STEP_MIN = 3;
 
-    public static final int RANDOM_STEP_MAX = 10;
+    static final int RANDOM_STEP_MAX = 10;
 
-    public static final int EDGE_ROUND_MAX = 3;
+    static final int EDGE_ROUND_MAX = 3;
 
     static final long EXECUTOR_DELAY = 100L;
 
@@ -36,7 +36,7 @@ public class MouseUtils {
         // Utils class
     }
 
-    public static Dimension getScreenResolution() {
+    static Dimension getScreenResolution() {
         GraphicsDevice gd = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();
         int width = gd.getDisplayMode().getWidth();
         int height = gd.getDisplayMode().getHeight();
@@ -44,21 +44,21 @@ public class MouseUtils {
         return new Dimension(width, height);
     }
 
-    public static Point getMouseLocation() {
+    static Point getMouseLocation() {
         return MouseInfo.getPointerInfo().getLocation();
     }
 
 
-    public static int generateIntervalSeconds(int minimum, int maximum) {
+    static int generateIntervalSeconds(int minimum, int maximum) {
         return minimum + MouseRandom.getSecureRandom().nextInt(maximum + 1);
     }
 
-    public static void log(String message) {
+    static void log(String message) {
         System.out.println();
         System.out.println(message);
     }
 
-    public static void logErr(String err) {
+    static void logErr(String err) {
         System.err.println();
         System.err.println(err);
     }

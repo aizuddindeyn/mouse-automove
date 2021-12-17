@@ -16,7 +16,7 @@ import static com.aizuddindeyn.mouse.MouseUtils.EDGE_ROUND_MAX;
  * @author aizuddindeyn
  * @date 11/7/2020
  */
-public class MouseMoveEdge implements MouseMove {
+class MouseMoveEdge implements MouseMove {
 
     @Override
     public void move() throws Exception {
