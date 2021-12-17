@@ -4,6 +4,7 @@
  */
 package com.aizuddindeyn.mouse;
 
+import java.awt.AWTException;
 import java.text.MessageFormat;
 import java.util.Scanner;
 
@@ -23,6 +24,13 @@ public class MouseApplication {
             SCANNER.close();
             MouseUtils.log("Stopping application");
         }));
+
+        try {
+            MouseRobot.init();
+        } catch (AWTException ex) {
+            MouseUtils.logErr("Failed to initialize robot: " + ex.getMessage());
+            Runtime.getRuntime().exit(1);
+        }
 
         MouseInstance.getInstance().start();
 

@@ -16,7 +16,7 @@ public interface MouseMove {
     void move() throws Exception;
 
     default void moveMouse(Point origin, Point target) throws Exception {
-        Robot robot = new Robot();
+        Robot robot = MouseRobot.getInstance();
         double dx = (target.getX() - origin.getX()) / MouseUtils.MOVE_TIMES;
         double dy = (target.getY() - origin.getY()) / MouseUtils.MOVE_TIMES;
         double dt = 1;
