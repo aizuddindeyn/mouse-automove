@@ -34,9 +34,10 @@ class MouseMoveRandom implements MouseMove {
                 y2 = MouseRandom.getSecureRandom().nextInt(screen.height);
             } while (x2 == x && y2 == y);
 
-            moveMouse(new Point(x, y), new Point(x2, y2));
+            move(new Point(x, y), new Point(x2, y2));
             x = x2;
             y = y2;
         }
+        move(MouseUtils.getMouseLocation(), p);
     }
 }

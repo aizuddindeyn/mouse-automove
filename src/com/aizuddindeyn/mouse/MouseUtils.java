@@ -30,6 +30,8 @@ class MouseUtils {
 
     static final int EDGE_ROUND_MAX = 3;
 
+    static final int CIRCLE_ROUND_MAX = 3;
+
     static final long EXECUTOR_DELAY = 100L;
 
     private MouseUtils() {

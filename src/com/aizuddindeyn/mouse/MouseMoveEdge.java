@@ -38,7 +38,7 @@ class MouseMoveEdge implements MouseMove {
 
         Point current = p;
         for (Point target : targets) {
-            moveMouse(current, target);
+            move(current, target);
             current = target;
         }
     }
