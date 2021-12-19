@@ -4,8 +4,6 @@
  */
 package com.aizuddindeyn.mouse;
 
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Timer;
 
 /**
@@ -16,16 +14,9 @@ class MouseInstance {
 
     private static final MouseInstance INSTANCE = new MouseInstance();
 
-    private static final Map<Integer, MouseMove> MOVE_MAP = new HashMap<>();
-
     private Timer timer;
 
     private boolean started = false;
-
-    static {
-        MOVE_MAP.put(1, new MouseMoveRandom());
-        MOVE_MAP.put(2, new MouseMoveEdge());
-    }
 
     private MouseInstance() {
         // Singleton
@@ -51,11 +42,9 @@ class MouseInstance {
 
     void execute() {
         try {
-            int type = MouseRandom.getSecureRandom().nextInt(MOVE_MAP.size()) + 1;
-            MouseMove move = MOVE_MAP.get(type);
-            if (move != null) {
-                move.move();
-            }
+            int index = MouseRandom.getSecureRandom().nextInt(MouseMoveEnum.getEnumMap().size());
+            MouseMoveEnum enums = MouseMoveEnum.values()[index];
+            MouseMoveEnum.getEnumMap().get(enums).move();
 
         } catch (Exception ex) {
             MouseUtils.logErr(ex.getMessage());
