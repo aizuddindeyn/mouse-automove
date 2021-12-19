@@ -10,7 +10,7 @@ import java.security.SecureRandom;
  * @author aizuddindeyn
  * @date 11/7/2020
  */
-public class MouseRandom {
+class MouseRandom {
 
     private static final SecureRandom SECURE_RANDOM = new SecureRandom();
 
@@ -18,7 +18,7 @@ public class MouseRandom {
         // Singleton
     }
 
-    public static SecureRandom getSecureRandom() {
+    static SecureRandom getSecureRandom() {
         return SECURE_RANDOM;
     }
 }

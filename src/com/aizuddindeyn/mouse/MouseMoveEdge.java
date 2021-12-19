@@ -16,7 +16,7 @@ import static com.aizuddindeyn.mouse.MouseUtils.EDGE_ROUND_MAX;
  * @author aizuddindeyn
  * @date 11/7/2020
  */
-public class MouseMoveEdge implements MouseMove {
+class MouseMoveEdge implements MouseMove {
 
     @Override
     public void move() throws Exception {
@@ -25,7 +25,6 @@ public class MouseMoveEdge implements MouseMove {
         Dimension screen = MouseUtils.getScreenResolution();
 
         int round = MouseRandom.getSecureRandom().nextInt(EDGE_ROUND_MAX) + 1;
-        MouseUtils.log("Round: " + round);
 
         List<Point> targets = new ArrayList<>();
         for (int i = 1; i <= round; i++) {
@@ -39,7 +38,7 @@ public class MouseMoveEdge implements MouseMove {
 
         Point current = p;
         for (Point target : targets) {
-            moveMouse(current, target);
+            move(current, target);
             current = target;
         }
     }
