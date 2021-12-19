@@ -9,24 +9,37 @@ Since download was blocked, so anti-idle application could not be downloaded and
 Therefore, the app was born, so that I could make a coffee with ease of mind.
 
 ## Introduction
-**mouse-automove** is simple Java application that uses Java AWT **Robot API** to move mouse randomly.
-- Pure Java 8 SDK only, without any other API library.
+**mouse-automove** is a simple Java application that uses Java AWT **Robot API** to move the mouse pointer.
+- Pure Java 8 SDK only, without any other 3rd party API library.
 - Shutdown hook to close the timer properly with its queued task.
 - Pause / resume the timer with 'p' keyboard input.
+- Exit the application 'e' keyboard input.
 
+## Features
 ### Randomization Features
-- Randomize the interval in seconds for each mouse movement, between 15 seconds to 60 seconds.
-- Currently, two types of mouse movement set:
-  - Mouse moved at random point on screen.
-  - Mouse moved at edge of screen.
-- Mouse move randomly:
-  - Random number of movement per, between 3 and 10.
-  - Random point on screen but linked from previous.
-- Mouse move on edge:
-  - Move from current mouse position to edge of screen.
+- Randomize the interval in seconds for each mouse pointer movement, between 15 seconds to 60 seconds.
+- Currently, three types of mouse pointer movement set:
+  - Mouse pointer moved to random point on screen.
+  - Mouse pointer moved at edge of screen.
+  - Mouse pointer moved in circular motion from middle point of screen.
+
+### Movement
+- Mouse pointer move randomly:
+  - Random number of movement per set, between 3 and 10.
+  - Random point on screen, but each will be linked from previous.
+  - Return to original mouse pointer position when finished.
+- Mouse pointer move on edge:
+  - Move mouse pointer from current position to top left corner of screen.
   - Move to each corner of screen, and make it a round.
   - Random number of round, between 1 and 3.
-  - Return to original mouse position when finished.
+  - Return to original mouse pointer position when finished.
+- Mouse pointer move in circular motion:
+  - Move mouse pointer from current position to the middle of screen.
+  - Radius of circle is calculated based on screen height and width.
+  - Move to 0<sup>o</sup> along positive x-axis, based on radius.
+  - Move in full circular motion from 0<sup>o</sup> until 360<sup>o</sup>.
+  - Random number of circular round, between 1 and 3.
+  - Return to middle of screen and back to original mouse pointer position when finished.
 
 ## Java API
 Significant Java SDK API that was used:
@@ -50,11 +63,14 @@ Script folder was provided with batch/shell scripts to compile and run.
 ./script/run.bat
 ./script/run.sh
 ```
-Type 'p' in console and press 'Enter' to pause or resume.
+
+During application started:
+- Type 'p' in console and press 'Enter' to pause or resume.
+- Type 'e' in console and press 'Enter' to exit.
 
 ## Development
 Next plan:
-- Create a mouse move to perform circular motion from center screen.
+- Create configurable properties for number of intervals, random step, and rounds for edge and circular movement.
 
 Pull request are welcome. Do contact me to learn more.
 
