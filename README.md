@@ -25,15 +25,18 @@ Therefore, the app was born, so that I could make a coffee with ease of mind.
 
 ### Movement
 - Mouse pointer move randomly:
+  - ![Random Move](https://media.giphy.com/media/Bm2n6isdf2wKrWHGOI/giphy.gif)
   - Random number of movement per set, between 3 and 10.
   - Random point on screen, but each will be linked from previous.
   - Return to original mouse pointer position when finished.
 - Mouse pointer move on edge:
+  - ![Edge Move](https://media.giphy.com/media/nM8zkb2ymisPQfSxAA/giphy.gif)
   - Move mouse pointer from current position to top left corner of screen.
   - Move to each corner of screen, and make it a round.
   - Random number of round, between 1 and 3.
   - Return to original mouse pointer position when finished.
 - Mouse pointer move in circular motion:
+  - ![Circular Move](https://media.giphy.com/media/4QVq3HIBKfhjdT0qpC/giphy.gif)
   - Move mouse pointer from current position to the middle of screen.
   - Radius of circle is calculated based on screen height and width.
   - Move to 0<sup>o</sup> along positive x-axis, based on radius.
